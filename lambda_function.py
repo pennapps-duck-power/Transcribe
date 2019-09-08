@@ -78,7 +78,7 @@ def transcribeAudio(uri):
     for index in range(len(sections)):
         timeline[endstamps[index]] = sections[index]
 
-    return json.dumps({v: k for k, v in timeline.items()})
+    return json.dumps(timeline)
 
 # sample output json format:
 #  section  [start_time, end_time]
