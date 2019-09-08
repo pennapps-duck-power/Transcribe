@@ -67,15 +67,16 @@ def transcribeAudio(uri):
 
     # finds the end_time for each section, and inserts a head for the beginning
     # of the audio
-    endstamps = [punc['end_time'] for punc in puncs]
-    endstamps.insert(0, "0.00")
+    endstamps = [float(punc['end_time']) for punc in puncs]
+    endstamps.insert(0, 0.00)
+    endstamps = endstamps[0:-1]
 
     # constructs a timeline with each section labelled its start time and end
     # time
     timeline = dict()
 
     for index in range(len(sections)):
-        timeline[sections[index]] = [endstamps[index], endstamps[index+1]]
+        timeline[endstamps[index]] = sections[index]
 
     return json.dumps(timeline)
 
