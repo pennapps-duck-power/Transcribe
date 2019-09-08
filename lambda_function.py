@@ -1,6 +1,6 @@
 import time
 import boto3
-import requests
+from botocore.vendored import requests
 import json
 import re
 
