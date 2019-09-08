@@ -4,6 +4,8 @@ import boto3
 import requests
 import json
 
+# takes in the url string of the file for transcribe
+# the bucket needs to be the same region as the end user
 def transcribeAudio(uri):
 	transcribe = boto3.client('transcribe')
 
@@ -73,4 +75,15 @@ def transcribeAudio(uri):
 
 	return json.dumps(timeline)
 
+# sample output json format:
+#  section  [start_time, end_time]
+# {"this": ["0.00", "0.55"], 
+#  " It was a bright Cartier in April": ["0.55", "3.26"], 
+#  " and the clocks were striking": ["3.26", "4.73"], 
+#  " 13 Winston Smith he string": ["4.73", "7.72"], 
+#  " nestled into he expressed in an effort to escape the vile winged slipped quickly through the glass": ["7.72", "13.54"], 
+#  " Doors of Victory mentions Doe not quickly enough to prevent this world gritty dust from entering along with him": ["13.54", "20.7"], 
+#  " The hallway smells off boiled cabbage and old rug mats": ["20.7", "28.5"], 
+#  " At one end of it is a colored posters too large for England": ["28.5", "32.77"], 
+#  " Display had been tackled did wall": ["32.77", "35.36"]}
 
